@@ -79,7 +79,11 @@ class Label_TypeUTimeStamp(LabelBase):
 		s = klvdata.rawdata.decode('utf-8', errors='replace')
 		# 'yymmddhhmmss.ffffff'
 		fmt = '%y%m%d%H%M%S.%f'
-		return datetime.strptime(s, fmt)
+		try:
+			s_datetime = datetime.strptime(s, fmt)
+		except:
+			s_datetime = datetime.strptime("111111111111.111", fmt)
+		return s_datetime
 
 class LabelDVID(LabelBase):
 	def __init__(self):
